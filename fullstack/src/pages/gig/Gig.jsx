@@ -2,7 +2,7 @@ import React from 'react';
 import "./Gig.scss"
 const Gig = () => {
   return (
-    <div>
+    <div className='gig'>
       Gig
     </div>
   );
