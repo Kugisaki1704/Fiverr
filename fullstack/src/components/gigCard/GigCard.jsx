@@ -2,7 +2,8 @@ import React from 'react';
 import './GigCard.scss'
 import { Link } from "react-router-dom";
 
-const GigCard = () => {
+
+const GigCard = ({ item }) => {
   return (
     <Link to="/gig/123" className="link">
     <div className='gigCard'>
@@ -23,7 +24,7 @@ const GigCard = () => {
         <img src="./img/heart.png" alt="" />
         <div className="price">
         <span>STARTING AT</span>
-        <h2>${item.price}</h2>
+        <h4>${item.price}</h4>
         </div>
       </div>
     </div>
