@@ -14,7 +14,7 @@ const Home = () => {
     <div className='home'>
       <Featured/>
       <TrustedBy/>
-      <Slide>
+      <Slide >
         {cards.map((card) => (
           <div key={card.id} className='carousel-item'>
             <CatCard item={card} />
