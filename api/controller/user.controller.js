@@ -1,17 +1,13 @@
-import User from "../modules/user.model.js";
-import createError from "../utils/createError.js";
+// import User from "../modules/user.model.js";
+import jwt from "jsonwebtoken";
 
-export const deleteUser = async (req, res, next) => {
-  const user = await User.findById(req.params.id);
+export const deleteUser = async (req,res)=>{
+    const token = req.cookies.accessToken;
+    if(!token) return res.status(401).send("Your are not authenticated!");
 
-  if (req.userId !== user._id.toString()) {
-    return next(createError(403, "You can delete only your account!"));
-  }
-  await User.findByIdAndDelete(req.params.id);
-  res.status(200).send("deleted.");
-};
-export const getUser = async (req, res, next) => {
-  const user = await User.findById(req.params.id);
+    jwt.verify(token,process.env.JWT_KEY , (err,payload)=>{
+        res.send(payload);
+    })
+    // await User.findByIdAndDelete(req.params.id);
 
-  res.status(200).send(user);
-};
+}
